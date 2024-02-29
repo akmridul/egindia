@@ -19,7 +19,7 @@ class SearchMeetingController extends Controller
 
         $filename = uniqid() . '_' . $file->getClientOriginalName();
 
-        if(!$file->move(public_path($folder), $filename)) {
+        if($file->move(public_path($folder), $filename)) {
             return redirect()->route('search.meeting')->with('success', 'File uploaded successfully!');
         } else {
             return redirect()->back()->with('failure', 'File uploading failed. Please try again!');
